@@ -32,7 +32,7 @@ should be under the root. So, it is valid for tincan.xml to be in a nested direc
 structure within the zip, but only if every directory above it contains nothing but a
 single sub-directory. 
 
-__Note__ This means that two files, respectively named tincan.xml (standalone file) and some-content.zip, would both be valid TinCan packages. In the case of the zip file, tincan.xml must be present and either be at the root of the zipped files structure (/tincan.xml) or at the root of the single possible subdirectory of any level (e.g. /subdir1/subdir2/subdir3/subdir4/tincan.xml) if there is no "alternative" path except for those subdirectories composing the path to tincan.xml.
+__Note:__ _This means that two files, respectively named tincan.xml (standalone file) and some-content.zip, would both be valid TinCan packages. In the case of the zip file, tincan.xml must be present and either be at the root of the zipped files structure (/tincan.xml) or at the root of the single possible subdirectory of any level (e.g. /subdir1/subdir2/subdir3/subdir4/tincan.xml) if there is no "alternative" path except for those subdirectories composing the path to tincan.xml._
 
 If HTML files are included in the content package, they may link to each other, or other
 resources within the package, using relative paths based on the package structure. They
