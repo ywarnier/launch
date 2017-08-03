@@ -237,8 +237,7 @@ they should not be necessary for retrieving a resource from the server. Note tha
 methodology works for retrieving 1 resource at a time, an HTML document loaded in this
 way which includes relative paths would have broken links.
 
-https://example.com/TCAPI/content/Etiquette/distracting.jpg?content_token=b50607fb-956e-
-429f-b89e-388c43dbbbcf
+https://example.com/TCAPI/content/Etiquette/distracting.jpg?content_token=b50607fb-956e-429f-b89e-388c43dbbbcf
 
 The client may then issue an HTTP GET to this URL to access the resource.
 
