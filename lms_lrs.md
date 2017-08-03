@@ -21,18 +21,18 @@ create a package that contains only activity definitions, however content and ac
 provider definitions may only be packaged with an associated activity definition.
 
 A TinCan package must always include a TinCan metadata file, this is a file named
-“tincan.xml”, conforming to the <a href="http://projecttincan.com/tincan.xsd">TinCan</a>
+`tincan.xml`, conforming to the <a href="http://projecttincan.com/tincan.xsd">TinCan</a>
 schema. If not including content, this file
 itself may be used as the TinCan package. If content is to be included, then this file
 must be placed into a zip file with the content.
 
-A TinCan package must contain exactly one “tincan.xml” file. The location of the
-“tincan.xml” file is considered the “root” of the package. All files within the package
-should be under the root. So, it is valid for tincan.xml to be in a nested directory
+A TinCan package must contain exactly one `tincan.xml` file. The location of the
+`tincan.xml` file is considered the “root” of the package. All files within the package
+should be under the root. So, it is valid for `tincan.xml` to be in a nested directory
 structure within the zip, but only if every directory above it contains nothing but a
 single sub-directory. 
 
-__Note:__ _This means that two files, respectively named tincan.xml (standalone file) and some-content.zip, would both be valid TinCan packages. In the case of the zip file, tincan.xml must be present and either be at the root of the zipped files structure (/tincan.xml) or at the root of the single possible subdirectory of any level (e.g. /subdir1/subdir2/subdir3/subdir4/tincan.xml) if there is no "alternative" path except for those subdirectories composing the path to tincan.xml._
+__Note:__ _This means that two files, respectively named `tincan.xml` (standalone file) and some-content.zip, would both be valid TinCan packages. In the case of the zip file, `tincan.xml` must be present and either be at the root of the zipped files structure (e.g. `/tincan.xml`) or at the root of the single possible subdirectory of any level (e.g. `/subdir1/subdir2/subdir3/subdir4/tincan.xml`) if there is no "alternative" path except for those subdirectories composing the path to `tincan.xml`._
 
 If HTML files are included in the content package, they may link to each other, or other
 resources within the package, using relative paths based on the package structure. They
@@ -40,8 +40,8 @@ may also link to external resources using absolute paths.
 
 ### Activity Definition
 
-The activity definition section of tincan.xml maps to the activity definition defined in
-the TCAPI document, with the exception of “launch” and “resource”. 
+The activity definition section of `tincan.xml` maps to the activity definition defined in
+the TCAPI document, with the exception of `launch` and `resource`. 
 
 Launch is an absolute or relative path to a document which can be launched by the LMS in
 a web browser in order to “deliver” this activity. 
@@ -55,7 +55,7 @@ This limitation should be lifted in future TinCan versions but the implementatio
 consequences of multiple launchable activities per package need more thought first.
 
 __NOTE:__ Activities do not have a hierarchy, and are declared as a flat list. Any
-hierarchical context must be reported by the activity provider, using the “context”
+hierarchical context must be reported by the activity provider, using the `context`
 portion of each statement. (if that context is to be preserved). If emulating a
 traditional SCORM package using TinCan, consider adding a “grouping” activity to each
 statement, which corresponds to your “root of the activity tree”, and also a “parent”
@@ -63,18 +63,18 @@ activity.
 
 ### Activity Provider Definition, activity groups.
 
-The tincan.xml file includes one or more groups of activities. The reason for breaking
+The `tincan.xml` file includes one or more groups of activities. The reason for breaking
 up activities into groups is to enable defining different authorized activity providers
-for each group. Each group of activities has a “provider” section, which MAY be used to
+for each group. Each group of activities has a `provider` section, which MAY be used to
 declare to the LMS/LRS what applications (activity providers) should be allowed to
 report statements about each group of activities. The elements in this section reflect
 the information that must be registered during the OAuth application registration
 process, and provide a way to get this information into an LMS without the administrator
 having to go through a registration UI.
 
-The schema for tincan.xml is: http://projecttincan.com/tincan.xsd
+The schema for `tincan.xml` is: http://projecttincan.com/tincan.xsd
 
-tincan.xml doesn't have to have all activity IDs that will be used in it, what it should
+`tincan.xml` doesn't have to have all activity IDs that will be used in it, what it should
 have is:
 
 1) The activity ID that is considered the root activity for this package, along with a
@@ -82,10 +82,10 @@ launch link, so the LMS knows what to launch.
 
 2) Any activity details (such as activity descriptions) that should be available to
 reporting systems, but will not be (or may not be) sent by the activity provider when
-reporting statements. That is, tincan.xml may be used to describe activities to the LRS,
+reporting statements. That is, `tincan.xml` may be used to describe activities to the LRS,
 as an alternative to doing that description at runtime.
 
-As an example, a simple tincan.xml file could look like this:
+As an example, a minimalist `tincan.xml` file could look like this:
 ```
 <?xml version="1.0" encoding="utf-8" ?>
 <tincan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://projecttincan.com/tincan.xsd">
@@ -94,10 +94,6 @@ As an example, a simple tincan.xml file could look like this:
       <name lang="en-US">Time management 101</name>
       <description lang="en-US">Describes basic time management concepts in the context of office workers.</description>
       <launch lang="en-US">scormdriver/indexAPI.html</launch>
-    </activity>
-    <activity id="http://LSurcAvLY-RXi_CLj29hJ/cj3ll0c7v00013b64e929rh4a" type="http://adlnet.gov/expapi/activities/module">
-      <name lang="en-US">Terminology</name>
-      <description lang="en-US">A glossary of terms used in the time management 101 learning module.</description>
     </activity>
   </activities>
 </tincan>
@@ -108,9 +104,9 @@ As an example, a simple tincan.xml file could look like this:
 When importing a TinCan package, all the content, activity definitions, and activity
 provider definitions in the package will be imported.
 
-If any activity definitions are loaded then all the files within the package starting
-from the “root”, and excluding the file “tincan.xml”, must be placed in an accessible
-location by the LMS. For any activity definitions that have “launch” or “resource”
+If any activity definition is loaded, then all the files within the package starting
+from the “root”, and excluding the file `tincan.xml`, must be placed in an accessible
+location by the LMS. For any activity definitions that have `launch` or `resource`
 defined, the LMS will store those values as activity profile entries in its associated
 LRS. Any relative URLs will be transformed into absolute URLs based on the location the
 LRS stored the content.
@@ -125,7 +121,7 @@ then the attribute should be left blank.
 ## Launch
 <a name="launch" />
 
-TinCan APs (Activity Providers) do not need to be launched from an LMS, however it is still an option. When
+TinCan APs (_Activity Providers_) do not need to be launched from an LMS, however it is still an option. When
 an LMS launches a TinCan AP, it will provide the necessary information for that AP to
 track back to the LRS (endpoint, learner information, credentials, and optionally
 registration, activity ID, platform,language, and grouping). The format of the launch
@@ -136,7 +132,7 @@ URL will be as follows:
 ```
 
 Note that some of the parameter values include reserved characters, and even other
-URLS, and therefore must be URL encoded.
+URLs, and therefore must be URL encoded.
 
 Example launch link (shown without URL encoding and with line breaks for readability):
 
@@ -151,11 +147,11 @@ http://example.scorm.com/TCActivityProvider/
 
 Partial launch information may also be provided by an LMS in the form of a launch link,
 which may consist of only endpoint information, or may include learner information but
-not credentials. In this case, the AP would have to have been configured with or prompt
-for the necessary information.
+not credentials. In this case, the AP would have to have been configured with - or prompt
+for - the necessary information.
 
-The LMS should specify Accept-Language, if it knows the learner’s language preferences.
-Except for its location in the query string instead of the header, Accept-Language
+The LMS should specify `Accept-Language`, if it knows the learner’s language preferences.
+Except for its location in the query string instead of the header, `Accept-Language`
 should be constructed and interpreted according to
 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC 2616</a> (HTTP 1.1).
 
@@ -166,7 +162,7 @@ activity being launch reports, so that these statements can later be identified 
 being related to the grouping activity.
 
 The LMS should specify a registration on a launch link if the launch is logically part
-of an LMS “registration”. The Activity Provider will then store the specified
+of an LMS “registration”. The _Activity Provider_ will then store the specified
 registration in context when reporting statements.
 
 Any parameters that are not defined here which are passed on a launch link should be
@@ -179,8 +175,8 @@ LRS endpoint it should track to. The AP may also be configured with credentials 
 LRS, in which case credentials need not be obtained for each learner.
 
 If launch refers to an activity with associated protected content, the launch link will
-include additional parameters to support access to that protected content. (see
-<a href="#privateContent">Private Content Access and Tin Can</a>
+include additional parameters to support access to that protected content (see
+<a href="#privateContent">_Private Content Access_ and _Tin Can_</a>).
 
 ### OAuth
 
@@ -192,7 +188,7 @@ asking the learner to re-authenticate.
 ### Other Scenarios
 
 The process of getting launch information from an LMS to an AP in a manner other than a
-launch link (URL) is not defined. Although it is a goal of the Tin Can API to support out of
+launch link (URL) is not defined. Although it is a goal of the TinCan API to support out of
 browser scenarios, this is supported by allowing the AP to pass information to a LRS
 about learners and activities that have not been previously defined in the LRS. That is,
 out of browser scenarios are supported by removing the requirement for the LRS to launch
