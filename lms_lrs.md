@@ -137,12 +137,13 @@ URLs, and therefore must be URL encoded.
 Example launch link (shown without URL encoding and with line breaks for readability):
 
 ```
-http://example.scorm.com/TCActivityProvider/   
-?endpoint=http://example.scorm.com/lrs/   
-&auth=OjFjMGY4NTYxNzUwOGI4YWY0NjFkNzU5MWUxMzE1ZGQ1   
-&actor={ "name" : ["Project Tin Can"], "mbox" : ["mailto:tincan@scorm.com"] }   
-&registration=760e3480-ba55-4991-94b0-01820dbd23a2   
-&activity_id=http://example.scorm.com/tincan/example/simplestatement   
+http://example.scorm.com/TCActivityProvider/
+?endpoint=http://example.scorm.com/lrs/
+&auth=OjFjMGY4NTYxNzUwOGI4YWY0NjFkNzU5MWUxMzE1ZGQ1
+&actor={ "name" : ["Project Tin Can"], "mbox" : ["mailto:tincan@scorm.com"] }
+&registration=760e3480-ba55-4991-94b0-01820dbd23a2
+&activity_id=http://example.scorm.com/tincan/example/simplestatement
+&Accept-Language=en-US
 ```
 
 Partial launch information may also be provided by an LMS in the form of a launch link,
