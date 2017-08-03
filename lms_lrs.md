@@ -244,12 +244,13 @@ The client may then issue an HTTP GET to this URL to access the resource.
 In order to retrieve an entire content package, the content endpoint would be combined
 with the content token, with no additional path information. So the following URL would
 retrieve the entire content package, in zip format:
+
 https://example.com/TCAPI/content/?content_token=b50607fb-956e-429f-b89e-388c43dbbbcf
 
 The server will not enforce any authentication scheme on the content endpoint, except
-validation of the content token. The content token will serve both the validate the
+validation of the content token. The content token will serve both to validate the
 request, and look up what Tin Can package the request is associated with. The content
-token will remain valid as long as the ‘auth’ parameter sent in the launch link remains
+token will remain valid as long as the `auth` parameter sent in the launch link remains
 valid.
 
 Upon receiving a request on the content endpoint, and validating the content token, it
@@ -260,12 +261,12 @@ to allow access to the content.
 If the above behavior is not practical, the server must instead handle GET, HEAD (should this be READ?), and
 OPTIONS requests according to the HTTP 1.1 specification, as if the server was hosting
 the content at the specified URL.  Note that this includes properly supporting headers
-such as ETag, Range, if-*, etc.
+such as ETag, Range, if\-\*, etc.
 
 The behavior described above is intended to allow clients to access individual protected
 resources without implementing any Tin Can behavior. For example, this is important in
 order to enable handing off a URL to a video player, that player needs only support
-HTTP, it does not need to have any Tin Can specific logic. It will be still be necessary
+HTTP, it does not need to have any Tin Can specific logic. It will still be necessary
 for the Tin Can client application to generate the correct URL for each protected
-resource. So a resource which when loaded then refers to other resources (such as a web
+resource. So a resource which, when loaded, then refers to other resources (such as a web
 page), must be loaded by a client with additional logic to fix those links.
