@@ -93,7 +93,7 @@ As an example, a simple tincan.xml file could look like this:
     <activity id="http://LSurcAvLY-RXi_CLj29hJ" type="http://adlnet.gov/expapi/activities/course">
       <name lang="en-US">Time management 101</name>
       <description lang="en-US">Describes basic time management concepts in the context of office workers.</description>
-    <launch lang="en-US">scormdriver/indexAPI.html</launch>
+      <launch lang="en-US">scormdriver/indexAPI.html</launch>
     </activity>
     <activity id="http://LSurcAvLY-RXi_CLj29hJ/cj3ll0c7v00013b64e929rh4a" type="http://adlnet.gov/expapi/activities/module">
       <name lang="en-US">Terminology</name>
