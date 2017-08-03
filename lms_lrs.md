@@ -85,6 +85,24 @@ reporting systems, but will not be (or may not be) sent by the activity provider
 reporting statements. That is, tincan.xml may be used to describe activities to the LRS,
 as an alternative to doing that description at runtime.
 
+As an example, a simple tincan.xml file could look like this:
+```
+<?xml version="1.0" encoding="utf-8" ?>
+<tincan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://projecttincan.com/tincan.xsd">
+  <activities>
+    <activity id="http://LSurcAvLY-RXi_CLj29hJ" type="http://adlnet.gov/expapi/activities/course">
+      <name lang="en-US">Time management 101</name>
+      <description lang="en-US">Describes basic time management concepts in the context of office workers.</description>
+    <launch lang="en-US">scormdriver/indexAPI.html</launch>
+    </activity>
+    <activity id="http://LSurcAvLY-RXi_CLj29hJ/cj3ll0c7v00013b64e929rh4a" type="http://adlnet.gov/expapi/activities/module">
+      <name lang="en-US">Terminology</name>
+      <description lang="en-US">A glossary of terms used in the time management 101 learning module.</description>
+    </activity>
+  </activities>
+</tincan>
+```
+
 ### Import
 
 When importing a TinCan package, all the content, activity definitions, and activity
