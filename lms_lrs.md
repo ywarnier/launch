@@ -1,4 +1,4 @@
-## Incorporating a TinCan LRS into an LMS
+# Incorporating a TinCan LRS into an LMS
 
 If you are not familiar with Project Tin Can, the TinCan API, and the term LRS, please
 refer first to the [Tin Can API specification](http://www.adlnet.gov/wp-content/uploads/2013/05/20130521_xAPI_v1.0.0-FINAL-correx.pdf).
@@ -13,7 +13,7 @@ In particular, content packaging, launch, and import should be defined for an LM
 not for an LRS -- it just stores and retrieves learning records, not content.
 
 
-### Packaging
+## Packaging
 
 Content, activity definitions, and activity provider definitions may be packaged for
 TinCan. The primary object being packaged is always activity definitions. It is valid to
@@ -102,11 +102,11 @@ of the associated entry is known, it should be declared. Where an entry is avail
 multiple languages, it should be repeated for each language. If the language is unknown,
 then the attribute should be left blank.
 
+## Launch
 <a name="launch" />
-### Launch
 
-TinCan APs(?) do not need to be launched from an LMS, however it is still an option. When
-an LMS launches a Tin Can AP, it will provide the necessary information for that AP to
+TinCan APs (Activity Providers) do not need to be launched from an LMS, however it is still an option. When
+an LMS launches a TinCan AP, it will provide the necessary information for that AP to
 track back to the LRS (endpoint, learner information, credentials, and optionally
 registration, activity ID, platform,language, and grouping). The format of the launch
 URL will be as follows:
@@ -180,10 +180,10 @@ the activity. Minimally, the AP must be configured with the LRS endpoint, and us
 will also need authentication credentials.
 
 
+## Private Content Access and TinCan
 <a name="privateContent"/>
-### Private Content Access and TinCan
 
-This section describes a companion specification to the Tin Can API for the purpose of
+This section describes a companion specification to the TinCan API for the purpose of
 gaining access to content that is stored on an LMS, but which requires authentication to
 retrieve. This is needed since even though TinCan allows tracking of experiences for
 which the content is not stored on an LMS, or for which there is no traditional content,
