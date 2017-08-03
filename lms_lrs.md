@@ -1,6 +1,6 @@
-# Incorporating a TinCan LRS into an LMS
+# Incorporating a Tin Can LRS into an LMS
 
-If you are not familiar with Project Tin Can, the TinCan API, and the term LRS, please
+If you are not familiar with Project Tin Can, the Tin Can API, and the term LRS, please
 refer first to the [Tin Can API specification](http://www.adlnet.gov/wp-content/uploads/2013/05/20130521_xAPI_v1.0.0-FINAL-correx.pdf).
 
 Since an LRS is meant to be a component with limited but well defined capabilities, we
@@ -16,23 +16,23 @@ not for an LRS -- it just stores and retrieves learning records, not content.
 ## Packaging
 
 Content, activity definitions, and activity provider definitions may be packaged for
-TinCan. The primary object being packaged is always activity definitions. It is valid to
+Tin Can. The primary object being packaged is always activity definitions. It is valid to
 create a package that contains only activity definitions, however content and activity
 provider definitions may only be packaged with an associated activity definition.
 
-A TinCan package must always include a TinCan metadata file, this is a file named
-`tincan.xml`, conforming to the <a href="http://projecttincan.com/tincan.xsd">TinCan</a>
+A Tin Can package must always include a Tin Can metadata file, this is a file named
+`tincan.xml`, conforming to the <a href="http://projecttincan.com/tincan.xsd">Tin Can</a>
 schema. If not including content, this file
-itself may be used as the TinCan package. If content is to be included, then this file
+itself may be used as the Tin Can package. If content is to be included, then this file
 must be placed into a zip file with the content.
 
-A TinCan package must contain exactly one `tincan.xml` file. The location of the
+A Tin Can package must contain exactly one `tincan.xml` file. The location of the
 `tincan.xml` file is considered the “root” of the package. All files within the package
 should be under the root. So, it is valid for `tincan.xml` to be in a nested directory
 structure within the zip, but only if every directory above it contains nothing but a
 single sub-directory. 
 
-__Note:__ _This means that two files, respectively named `tincan.xml` (standalone file) and some-content.zip, would both be valid TinCan packages. In the case of the zip file, `tincan.xml` must be present and either be at the root of the zipped files structure (e.g. `/tincan.xml`) or at the root of the single possible subdirectory of any level (e.g. `/subdir1/subdir2/subdir3/subdir4/tincan.xml`) if there is no "alternative" path except for those subdirectories composing the path to `tincan.xml`._
+__Note:__ _This means that two files, respectively named `tincan.xml` (standalone file) and some-content.zip, would both be valid Tin Can packages. In the case of the zip file, `tincan.xml` must be present and either be at the root of the zipped files structure (e.g. `/tincan.xml`) or at the root of the single possible subdirectory of any level (e.g. `/subdir1/subdir2/subdir3/subdir4/tincan.xml`) if there is no "alternative" path except for those subdirectories composing the path to `tincan.xml`._
 
 If HTML files are included in the content package, they may link to each other, or other
 resources within the package, using relative paths based on the package structure. They
@@ -51,13 +51,13 @@ download which will enable them to experience this activity, for example: an app
 to run, a video to view, or directions to a physical location for an event.
 
 __Only one activity definition within a package may contain launch or resource elements.__
-This limitation should be lifted in future TinCan versions but the implementation
+This limitation should be lifted in future Tin Can versions but the implementation
 consequences of multiple launchable activities per package need more thought first.
 
 __NOTE:__ Activities do not have a hierarchy, and are declared as a flat list. Any
 hierarchical context must be reported by the activity provider, using the `context`
 portion of each statement. (if that context is to be preserved). If emulating a
-traditional SCORM package using TinCan, consider adding a “grouping” activity to each
+traditional SCORM package using Tin Can, consider adding a “grouping” activity to each
 statement, which corresponds to your “root of the activity tree”, and also a “parent”
 activity.
 
@@ -101,7 +101,7 @@ As an example, a minimalist `tincan.xml` file could look like this:
 
 ### Import
 
-When importing a TinCan package, all the content, activity definitions, and activity
+When importing a Tin Can package, all the content, activity definitions, and activity
 provider definitions in the package will be imported.
 
 If any activity definition is loaded, then all the files within the package starting
@@ -113,7 +113,7 @@ LRS stored the content.
 
 ### Language / Internationalization
 
-Many of the entries in the TinCan schema have an xml:lang attribute. Where the language
+Many of the entries in the Tin Can schema have an xml:lang attribute. Where the language
 of the associated entry is known, it should be declared. Where an entry is available in
 multiple languages, it should be repeated for each language. If the language is unknown,
 then the attribute should be left blank.
@@ -121,8 +121,8 @@ then the attribute should be left blank.
 ## Launch
 <a name="launch" />
 
-TinCan APs (_Activity Providers_) do not need to be launched from an LMS, however it is still an option. When
-an LMS launches a TinCan AP, it will provide the necessary information for that AP to
+Tin Can APs (_Activity Providers_) do not need to be launched from an LMS, however it is still an option. When
+an LMS launches a Tin Can AP, it will provide the necessary information for that AP to
 track back to the LRS (endpoint, learner information, credentials, and optionally
 registration, activity ID, platform,language, and grouping). The format of the launch
 URL will be as follows:
@@ -188,7 +188,7 @@ asking the learner to re-authenticate.
 ### Other Scenarios
 
 The process of getting launch information from an LMS to an AP in a manner other than a
-launch link (URL) is not defined. Although it is a goal of the TinCan API to support out of
+launch link (URL) is not defined. Although it is a goal of the Tin Can API to support out of
 browser scenarios, this is supported by allowing the AP to pass information to a LRS
 about learners and activities that have not been previously defined in the LRS. That is,
 out of browser scenarios are supported by removing the requirement for the LRS to launch
@@ -196,21 +196,21 @@ the activity. Minimally, the AP must be configured with the LRS endpoint, and us
 will also need authentication credentials.
 
 
-## Private Content Access and TinCan
+## Private Content Access and Tin Can
 <a name="privateContent"/>
 
-This section describes a companion specification to the TinCan API for the purpose of
+This section describes a companion specification to the Tin Can API for the purpose of
 gaining access to content that is stored on an LMS, but which requires authentication to
-retrieve. This is needed since even though TinCan allows tracking of experiences for
+retrieve. This is needed since even though Tin Can allows tracking of experiences for
 which the content is not stored on an LMS, or for which there is no traditional content,
 the LMS is still a convenient place to store the content associated with a learning
-experience. Since TinCan does not require an active browser session, the content may no
+experience. Since Tin Can does not require an active browser session, the content may no
 longer be retrieved by relying on that session.
 
 Since the problem is accessing content which is stored on an LMS, and to avoid the need
 for a complex permissions scheme, this access method will apply only to content that has
-been uploaded in a TinCan package, and only where the accessor of that content has been
-launched using a TinCan launch link.
+been uploaded in a Tin Can package, and only where the accessor of that content has been
+launched using a Tin Can launch link.
 
 In addition to the launch link parameters described in the <a href="#launch">launch
 section</a>, the following parameters will be provided as needed:
@@ -226,7 +226,7 @@ When a client application needs to access a protected resource, it will first de
 the path to the protected resource based on the content endpoint, and the relative path
 of the protected resource within the Tin Can package.
 
-For example, in the Golf Example TinCan package, there is a resource
+For example, in the Golf Example Tin Can package, there is a resource
 ‘Etiquette/distracting.jpg’. If the content endpoint is:
 https://example.com/TCAPI/content/, then the following path would be built to access
 this protected resource, and the specified content_token is added to that URL. It should
@@ -248,7 +248,7 @@ https://example.com/TCAPI/content/?content_token=b50607fb-956e-429f-b89e-388c43d
 
 The server will not enforce any authentication scheme on the content endpoint, except
 validation of the content token. The content token will serve both the validate the
-request, and look up what TinCan package the request is associated with. The content
+request, and look up what Tin Can package the request is associated with. The content
 token will remain valid as long as the ‘auth’ parameter sent in the launch link remains
 valid.
 
@@ -263,9 +263,9 @@ the content at the specified URL.  Note that this includes properly supporting h
 such as ETag, Range, if-*, etc.
 
 The behavior described above is intended to allow clients to access individual protected
-resources without implementing any TinCan behavior. For example, this is important in
+resources without implementing any Tin Can behavior. For example, this is important in
 order to enable handing off a URL to a video player, that player needs only support
 HTTP, it does not need to have any Tin Can specific logic. It will be still be necessary
-for the TinCan client application to generate the correct URL for each protected
+for the Tin Can client application to generate the correct URL for each protected
 resource. So a resource which when loaded then refers to other resources (such as a web
 page), must be loaded by a client with additional logic to fix those links.
